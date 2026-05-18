@@ -5,11 +5,40 @@ const profilePanel = document.querySelector(".profile-panel");
 const toast = document.querySelector("[data-toast]");
 const year = document.querySelector("[data-year]");
 
-const storedTheme = localStorage.getItem("soupon-theme");
+const storage = {
+  get(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+  set(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch {
+      // Some local preview contexts block storage. The UI should still work.
+    }
+  },
+};
+
+const showToast = (message) => {
+  if (!toast) {
+    return;
+  }
+
+  toast.textContent = message;
+  toast.classList.add("show");
+  window.setTimeout(() => toast.classList.remove("show"), 1700);
+};
+
+const storedTheme = storage.get("soupon-theme") ?? "dark";
 
 if (storedTheme === "dark") {
   body.classList.add("dark");
 }
+
+themeToggle?.setAttribute("aria-pressed", String(body.classList.contains("dark")));
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -59,24 +88,49 @@ if (!shouldReduceMotion) {
 
 themeToggle?.addEventListener("click", () => {
   body.classList.toggle("dark");
-  localStorage.setItem("soupon-theme", body.classList.contains("dark") ? "dark" : "light");
+  const isDark = body.classList.contains("dark");
+  storage.set("soupon-theme", isDark ? "dark" : "light");
+  themeToggle.setAttribute("aria-pressed", String(isDark));
 });
 
-copyButton?.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(window.location.href);
-    toast?.classList.add("show");
-    window.setTimeout(() => toast?.classList.remove("show"), 1700);
-  } catch {
-    toast.textContent = "コピーできませんでした";
-    toast?.classList.add("show");
-    window.setTimeout(() => toast?.classList.remove("show"), 1700);
+const copyText = async (text) => {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Fall back to the older selection API below.
+    }
   }
+
+  const input = document.createElement("textarea");
+  input.value = text;
+  input.setAttribute("readonly", "");
+  input.style.position = "fixed";
+  input.style.left = "-9999px";
+  input.style.top = "0";
+  document.body.append(input);
+  input.focus();
+  input.select();
+  input.setSelectionRange(0, input.value.length);
+
+  try {
+    return document.execCommand("copy");
+  } catch {
+    return false;
+  } finally {
+    input.remove();
+  }
+};
+
+copyButton?.addEventListener("click", async () => {
+  const copied = await copyText(window.location.href);
+  showToast(copied ? "URLをコピーしました" : "コピーできませんでした");
 });
 
 if (profilePanel) {
   let animationFrame = 0;
-  const savedGraphicX = Number(localStorage.getItem("soupon-graphic-x"));
+  const savedGraphicX = Number(storage.get("soupon-graphic-x"));
   const warmColor = [198, 91, 52];
   const coolColor = [26, 166, 151];
 
@@ -104,7 +158,7 @@ if (profilePanel) {
       const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
 
       setGraphicPosition(x, true);
-      localStorage.setItem("soupon-graphic-x", String(x));
+      storage.set("soupon-graphic-x", String(x));
     });
   };
 

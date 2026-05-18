@@ -80,14 +80,16 @@ button {
 .profile-panel {
   --spot-x: 50%;
   --cursor-rgb: 129, 124, 95;
-  --warm-opacity: 0.34;
-  --cool-opacity: 0.34;
-  --glow-opacity: 0.46;
+  --warm-opacity: 0.2;
+  --cool-opacity: 0.2;
+  --glow-opacity: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
   min-height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
   border-radius: var(--radius);
+  isolation: isolate;
 }
 
 .ambient-photo {
@@ -117,11 +119,12 @@ button {
     ),
     linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.34)),
     url("assets/soupon-texture.svg") center / cover no-repeat;
-  filter: saturate(1.46) contrast(1.08) brightness(1.07);
-  opacity: 0.96;
+  filter: none;
+  opacity: 1;
   transform: scale(1.02);
   transition: filter 180ms ease, opacity 180ms ease;
   will-change: background, filter;
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -139,22 +142,26 @@ button {
       rgba(var(--cursor-rgb), 0.12) min(100%, calc(var(--spot-x) + 60%)),
       transparent 100%
     );
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
   opacity: var(--glow-opacity);
   pointer-events: none;
 }
 
 .topbar,
+.character-portrait,
 .profile-content {
   position: relative;
   z-index: 1;
+  isolation: isolate;
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
-  padding: 18px;
+  padding: clamp(12px, 2vh, 18px) 20px;
+  z-index: 10;
 }
 
 .brand {
@@ -171,14 +178,20 @@ button {
 }
 
 .brand img,
-.avatar {
+.avatar,
+.character-portrait img {
   display: block;
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
 }
 
 .toolbar {
   display: flex;
   flex: 0 0 auto;
   gap: 8px;
+  position: relative;
+  z-index: 11;
 }
 
 .icon-button {
@@ -211,31 +224,49 @@ button {
   stroke-linejoin: round;
 }
 
+.icon-button svg {
+  pointer-events: none;
+}
+
+.character-portrait {
+  flex: 0 0 auto;
+  width: min(54%, 232px);
+  aspect-ratio: 1;
+  margin: clamp(4px, 1vh, 10px) auto clamp(8px, 1.6vh, 16px);
+  overflow: visible;
+  border-radius: 50%;
+  background: transparent;
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.24));
+  mix-blend-mode: normal;
+  opacity: 0.96;
+  pointer-events: none;
+}
+
+.character-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 0 58%, rgba(0, 0, 0, 0.88) 68%, transparent 76%);
+  mask-image: radial-gradient(circle at 50% 46%, #000 0 58%, rgba(0, 0, 0, 0.88) 68%, transparent 76%);
+  transform: scale(1.05);
+}
+
 .profile-content {
-  padding: 24px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-height: 0;
+  padding: clamp(16px, 3vh, 32px) clamp(20px, 3.5vw, 42px);
   color: #fffaf2;
-}
-
-.avatar-wrap {
-  display: grid;
-  place-items: center;
-  width: 116px;
-  height: 116px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  border-radius: 24px;
-  background: rgba(255, 250, 242, 0.18);
-  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.22);
-}
-
-.avatar {
-  width: 82px;
-  height: 82px;
 }
 
 .eyebrow,
 .section-heading p {
-  margin: 0 0 8px;
+  margin: 0 0 clamp(4px, 1vh, 8px);
   color: var(--accent-3);
   font-size: 0.78rem;
   font-weight: 800;
@@ -243,30 +274,42 @@ button {
 }
 
 .profile-content h1 {
-  margin: 0 0 0 -12px;
-  width: min(calc(100% + 36px), 680px);
+  position: relative;
+  flex: 0 0 auto;
+  width: min(calc(100% + 40px), 680px);
+  height: clamp(124px, 22vh, 184px);
+  margin: clamp(-26px, -3vh, -14px) 0 clamp(12px, 2vh, 20px) -20px;
+  overflow: visible;
   line-height: 1;
+  pointer-events: none;
 }
 
 .wordmark-title img {
   display: block;
-  width: 100%;
+  width: 128%;
+  max-width: none;
   height: auto;
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  transform: translate(-2.5%, calc(-60.5% - 12px));
+  transform-origin: left top;
+  pointer-events: none;
 }
 
 .bio {
   max-width: 33rem;
-  margin: 18px 0 0;
+  margin: 0;
   color: rgba(255, 250, 242, 0.86);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.55;
 }
 
 .status-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 22px;
+  margin-top: clamp(10px, 2vh, 18px);
 }
 
 .status-row span {
@@ -287,9 +330,10 @@ button {
 }
 
 .notice {
-  position: absolute;
-  top: 18px;
-  right: 18px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 40;
   opacity: 0;
   transform: translateY(-8px);
   border: 1px solid var(--line);
@@ -519,7 +563,12 @@ button {
   }
 
   .profile-panel {
-    min-height: 560px;
+    min-height: calc(100vh - 24px);
+    max-height: calc(100vh - 24px);
+  }
+
+  .character-portrait {
+    width: min(46vw, 210px);
   }
 
   .link-panel {
@@ -527,7 +576,9 @@ button {
   }
 
   .profile-content h1 {
-    width: min(calc(100% + 36px), 620px);
+    width: min(calc(100% + 32px), 588px);
+    height: clamp(124px, 28vw, 172px);
+    margin-left: -16px;
   }
 }
 
@@ -541,12 +592,23 @@ button {
   }
 
   .profile-content {
-    padding: 18px;
+    padding: 16px 18px 18px;
+  }
+
+  .character-portrait {
+    width: min(52vw, 180px);
   }
 
   .profile-content h1 {
-    margin-left: -8px;
-    width: min(calc(100% + 20px), 430px);
+    width: min(calc(100% + 18px), 448px);
+    height: clamp(110px, 34vw, 148px);
+    margin-left: -9px;
+    margin-bottom: clamp(10px, 3vw, 16px);
+  }
+
+  .wordmark-title img {
+    width: 132%;
+    transform: translate(-3%, calc(-60.5% - 12px));
   }
 
   .feature-card {

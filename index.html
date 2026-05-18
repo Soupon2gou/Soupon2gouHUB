@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Soupon2gouHUB</title>
+    <meta
+      name="description"
+      content="Soupon2gouHUBは、活動場所・SNS・制作物をひとつにまとめたリンクハブです。"
+    >
+    <meta property="og:title" content="Soupon2gouHUB">
+    <meta
+      property="og:description"
+      content="SNS、制作物、お問い合わせ先をまとめたリンクハブ。"
+    >
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f6f1e8">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="hub-shell">
+      <section class="profile-panel" aria-labelledby="profile-title">
+        <div class="ambient-photo" aria-hidden="true"></div>
+
+        <header class="topbar">
+          <a class="brand" href="#" aria-label="Soupon2gouHUB ホーム">
+            <img src="assets/logo.svg" alt="" width="38" height="38">
+            <span>Soupon2gouHUB</span>
+          </a>
+          <div class="toolbar" aria-label="ページ操作">
+            <button class="icon-button" type="button" data-theme-toggle aria-label="テーマを切り替える">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v2.2M12 18.8V21M4.64 4.64l1.56 1.56M17.8 17.8l1.56 1.56M3 12h2.2M18.8 12H21M4.64 19.36l1.56-1.56M17.8 6.2l1.56-1.56"></path>
+                <circle cx="12" cy="12" r="4.2"></circle>
+              </svg>
+            </button>
+            <button class="icon-button" type="button" data-copy-link aria-label="ページURLをコピー">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+                <path d="M5 15V7a2 2 0 0 1 2-2h8"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="profile-content">
+          <div class="avatar-wrap">
+            <img class="avatar" src="assets/logo.svg" alt="Soupon2gouHUBのロゴ">
+          </div>
+          <p class="eyebrow">Personal Link Hub</p>
+          <h1 id="profile-title" class="wordmark-title">
+            <img src="assets/wordmark.svg" alt="Soupon2gouHUB">
+          </h1>
+          <p class="bio">
+            作品、SNSをまとめました
+          </p>
+          <div class="status-row" aria-label="現在の活動">
+            <span>DTM</span>
+            <span>Editing</span>
+            <span>Programming</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="link-panel" aria-label="リンク一覧">
+        <div class="notice" role="status" data-toast>URLをコピーしました</div>
+
+        <div class="section-heading">
+          <p>Featured</p>
+          <h2>おすすめ</h2>
+        </div>
+
+        <a class="feature-card" href="https://soupon2gou.github.io/portfolio/" target="_blank" rel="noreferrer">
+          <span class="feature-visual" aria-hidden="true">
+            <img src="assets/logo.svg" alt="">
+          </span>
+          <span>
+            <strong>ポートフォリオ</strong>
+            <small>今まで作ったものまとめ</small>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8"></path>
+          </svg>
+        </a>
+
+        <div class="section-heading tool-heading">
+          <p>Tools</p>
+          <h2>ツール</h2>
+        </div>
+
+        <a class="feature-card tool-card" href="https://chromewebstore.google.com/detail/%E3%83%8B%E3%82%B3%E3%82%B7%E3%83%A7/fcadkminnhkjlnjlfdginjdihodfmbnc" target="_blank" rel="noreferrer">
+          <span class="feature-visual tool-visual" aria-hidden="true">
+            <img src="assets/icon-nicosho.png" alt="">
+          </span>
+          <span>
+            <strong>ニコニコスクリーンショット</strong>
+            <small>Chrome拡張機能</small>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8"></path>
+          </svg>
+        </a>
+
+        <div class="section-heading compact">
+          <p>Links</p>
+          <h2>リンク</h2>
+        </div>
+
+        <nav class="link-list" aria-label="Soupon2gouHUB links">
+          <a class="hub-link" href="https://twitter.com/Soupon2gou" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-x.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>X</strong>
+              <small>更新とお知らせ</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+
+          <!-- <a class="hub-link" href="https://www.instagram.com/Soupon2gou/" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-instagram.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>Instagram</strong>
+              <small>写真と制作の記録</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a> -->
+
+          <a class="hub-link" href="https://www.nicovideo.jp/user/118672563" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-niconico.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>ニコニコ（音MAD）</strong>
+              <small>音MAD</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+
+          <a class="hub-link" href="https://www.youtube.com/@soupon2gou_nichijou" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-youtube.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>YouTube（日常）</strong>
+              <small>日常</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+
+          <a class="hub-link" href="https://space.bilibili.com/1159628614?spm_id_from=333.1007.0.0" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-bilibili.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>bilibili動画</strong>
+              <small></small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+
+          <a class="hub-link" href="https://github.com/Soupon2gou" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-github.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>GitHub</strong>
+              <small>コード・制作物</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+
+          <a class="hub-link" href="https://note.com/soupon2gou2" target="_blank" rel="noreferrer">
+            <span class="link-icon">
+              <img src="assets/icon-note.svg" alt="" aria-hidden="true">
+            </span>
+            <span>
+              <strong>note</strong>
+              <small>文章や制作メモ</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </a>
+        </nav>
+
+        <footer class="footer">
+          <span>© <span data-year></span> Soupon2gouHUB</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Soupon2gouHUB logo</title>
+  <desc id="desc">A compact S2G monogram mark.</desc>
+  <rect width="128" height="128" rx="28" fill="#251f1b"/>
+  <path d="M28 44c8-16 22-24 40-24 16 0 28 7 36 20" fill="none" stroke="#e6b653" stroke-width="10" stroke-linecap="round"/>
+  <path d="M100 84c-8 16-22 24-40 24-16 0-28-7-36-20" fill="none" stroke="#1d8c82" stroke-width="10" stroke-linecap="round"/>
+  <path d="M38 65h24c8 0 13 4 13 11 0 8-7 13-18 13H36" fill="none" stroke="#fffaf2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 39H62c-8 0-13 4-13 11s6 11 15 11h10" fill="none" stroke="#fffaf2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="93" cy="90" r="8" fill="#d7582b"/>
+</svg>
